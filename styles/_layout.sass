@@ -186,24 +186,24 @@
       color: rgba($black-color, 0.8)
 
   &__links
-    flex: 0 0 100%
-    max-width: 100%
-    display: flex
-    flex-wrap: wrap
-
-  &
     flex: 0 0 65%
     max-width: 65%
+    display: flex
+    flex-wrap: wrap
+    gap: $spacing-xl
 
   &__column
-    flex: 0 0 100%
-    max-width: 100%
-    margin-bottom: $spacing-lg
+    width: 100%
 
-  &
-    flex: 0 0 33.333333%
-    max-width: 33.333333%
-    margin-bottom: 0
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 45%
+      max-width: 45%
+      margin-bottom: 0
+
+    @media (min-width: $breakpoint-xl)
+      flex: 0 0 25%
+      max-width: 25%
+      margin-bottom: 0
 
     h3
       color: $black-color
@@ -224,7 +224,7 @@
           transition: $transition-base
 
           &:hover
-            color: $primary-color
+            opcity: 0.5
 
   &__social
     display: flex
