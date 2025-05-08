@@ -186,11 +186,16 @@
       color: rgba($black-color, 0.8)
 
   &__links
-    flex: 0 0 65%
-    max-width: 65%
+    flex: 0 0 100%
+    max-width: 100%
     display: flex
     flex-wrap: wrap
     gap: $spacing-xl
+
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 65%
+      max-width: 65%
+      margin-bottom: 0
 
   &__column
     width: 100%
