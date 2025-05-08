@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boletos Disponibles - RifaMaster</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header header--tickets">
+      <div class="container">
+        <div class="header__content">
+          <div class="logo">
+            <h1><a href="/">RifaMaster</a></h1>
+          </div>
+          <nav class="nav">
+            <ul class="nav__list">
+              <li class="nav__item"><a href="/" class="nav__link">Inicio</a></li>
+              <li class="nav__item"><a href="/#about" class="nav__link">Nosotros</a></li>
+              <li class="nav__item"><a href="/#testimonials" class="nav__link">Testimonios</a></li>
+              <li class="nav__item"><a href="/#contact" class="nav__link">Contacto</a></li>
+              <li class="nav__item"><a href="/boletos.html" class="nav__link nav__link--highlight">Ver Boletos</a></li>
+            </ul>
+            <button class="nav__toggle" id="navToggle">
+              <span class="hamburger"></span>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="tickets-hero" data-aos="fade-up">
+        <div class="container">
+          <h2 class="tickets-hero__title">Selecciona tus números de la suerte</h2>
+          <p class="tickets-hero__text">Elige entre los números disponibles para participar en nuestra rifa actual. ¡Puedes seleccionar múltiples números para aumentar tus probabilidades!</p>
+          <div class="raffle-info">
+            <h3>Rifa Actual: Smart TV 65" 4K Ultra HD</h3>
+            <div class="raffle-info__details">
+              <div class="raffle-info__detail">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Sorteo: 30 de Diciembre, 2025</span>
+              </div>
+              <div class="raffle-info__detail">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Valor: $10 por boleto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ticket-selection" data-aos="fade-up">
+        <div class="container">
+          <div class="ticket-controls" data-aos="fade-up" data-aos-delay="200">
+            <div class="ticket-search">
+              <input type="text" id="ticketSearch" placeholder="Buscar número específico...">
+              <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="ticket-filter">
+              <label for="filterSelect">Mostrar:</label>
+              <select id="filterSelect">
+                <option value="all">Todos los números</option>
+                <option value="available">Disponibles</option>
+                <option value="reserved">Reservados</option>
+                <option value="sold">Vendidos</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="ticket-grid" id="ticketGrid" data-aos="fade-up" data-aos-delay="400">
+            <!-- Tickets will be generated dynamically -->
+          </div>
+
+          <div class="selected-tickets-actions" data-aos="fade-up" data-aos-delay="500">
+            <div class="selected-tickets-info">
+              <span>Boletos seleccionados: <span id="selectedTicketsCount">0</span></span>
+              <span>Total: $<span id="selectedTicketsTotal">0</span></span>
+            </div>
+            <button id="apartarBtn" class="btn btn--primary btn--lg" disabled>
+              <i class="fas fa-ticket-alt"></i> Apartar Boletos
+            </button>
+          </div>
+          
+          <div class="ticket-pagination" data-aos="fade-up" data-aos-delay="600">
+            <button class="btn btn--secondary" id="prevPage"><i class="fas fa-chevron-left"></i> Anterior</button>
+            <div class="pagination-info">
+              <span id="currentPage">1</span> de <span id="totalPages">10</span>
+            </div>
+            <button class="btn btn--secondary" id="nextPage">Siguiente <i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="ticketModal">
+      <div class="modal__content">
+        <button class="modal__close" id="modalClose">&times;</button>
+        <div class="modal__header">
+          <h3>Reserva tus Boletos</h3>
+          <p>Números seleccionados: <span id="selectedTicketNumber" class="selected-ticket"></span></p>
+        </div>
+        <div class="modal__body">
+          <form id="reservationForm">
+            <div class="form-group">
+              <label for="fullName">Nombre Completo</label>
+              <input type="text" id="fullName" name="fullName" required>
+              <small class="error-message" id="fullNameError"></small>
+            </div>
+            <div class="form-group">
+              <label for="city">Ciudad</label>
+              <input type="text" id="city" name="city" required>
+              <small class="error-message" id="cityError"></small>
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber">Número Telefónico</label>
+              <input type="tel" id="phoneNumber" name="phoneNumber" required>
+              <small class="error-message" id="phoneNumberError"></small>
+            </div>
+            <div class="form-group">
+              <label for="userEmail">Correo Electrónico</label>
+              <input type="email" id="userEmail" name="userEmail" required>
+              <small class="error-message" id="userEmailError"></small>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block">Reservar Boletos</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal" id="confirmationModal">
+      <div class="modal__content">
+        <button class="modal__close" id="confirmationClose">&times;</button>
+        <div class="modal__header">
+          <h3>¡Reserva Exitosa!</h3>
+        </div>
+        <div class="modal__body">
+          <div class="confirmation-message">
+            <i class="fas fa-check-circle"></i>
+            <p>Tus boletos números <span id="confirmedTicketNumber"></span> han sido reservados exitosamente.</p>
+          </div>
+          <div class="confirmation-details">
+            <p>Instrucciones de pago:</p>
+            <ol>
+              <li>Realiza una transferencia por el monto total a la cuenta <strong>1234-5678-9012</strong></li>
+              <li>Envía el comprobante al WhatsApp: <strong>+52 55 1234 5678</strong></li>
+              <li>Recibirás la confirmación de tus boletos en 24 horas</li>
+            </ol>
+          </div>
+          <button id="confirmationDoneBtn" class="btn btn--primary btn--block">Entendido</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" data-aos="fade-up">
+      <div class="container">
+        <div class="footer__content">
+          <div class="footer__logo">
+            <h2>RifaMaster</h2>
+            <p>Tu destino para grandes premios</p>
+          </div>
+          <div class="footer__links">
+            <div class="footer__column">
+              <h3>Enlaces Rápidos</h3>
+              <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/#about">Nosotros</a></li>
+                <li><a href="/#testimonials">Testimonios</a></li>
+                <li><a href="/#contact">Contacto</a></li>
+                <li><a href="/boletos.html">Ver Boletos</a></li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3>Recursos</h3>
+              <ul>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Cómo Participar</a></li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3>Síguenos</h3>
+              <div class="footer__social">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2025 RifaMaster. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/js/tickets.js"></script>
+  </body>
+</html>

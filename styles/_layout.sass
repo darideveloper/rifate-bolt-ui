@@ -1,0 +1,266 @@
+@use 'variables' as *
+  
+// Header
+.header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: $z-index-fixed
+  background-color: $black-color
+  box-shadow: $shadow
+  backdrop-filter: blur(5px)
+  transition: $transition-base
+
+  &__content
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 80px
+
+  &--tickets
+    background-color: $black-color
+
+    .logo h1 a
+      color: $white
+
+    .nav__link
+      color: $white
+
+      &:hover
+        color: $secondary-color
+
+  &--highlight
+    background-color: $primary-color
+    color: $black-color
+
+    &:hover
+      background-color: opacity(0.8)
+      color: $black-color
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after
+      background-color: $white
+
+.logo
+  h1
+    font-size: 1.75rem
+    margin-bottom: 0
+    font-weight: $font-weight-bolder
+    color: $white
+
+    a
+      color: inherit
+      text-decoration: none
+
+// Navigation
+.nav
+  &__list
+    display: flex
+    list-style: none
+    padding: 0
+    margin: 0
+
+    @media (max-width: #{($breakpoint-md - 1)})
+      display: none
+      position: absolute
+      top: 80px
+      left: 0
+      width: 100%
+      background-color: $black-color
+      flex-direction: column
+      box-shadow: $shadow
+      padding: $spacing-md 0
+
+      &.active
+        display: flex
+
+  &__item
+    @media (max-width: #{$breakpoint-md - 1})
+      width: 100%
+      text-align: center
+
+      & + &
+        margin-top: $spacing-md
+
+  &__link
+    display: inline-block
+    padding: $spacing-sm $spacing-md
+    color: $white
+    text-decoration: none
+    font-weight: $font-weight-bold
+    transition: $transition-base
+
+    &:hover
+      color: $primary-color
+
+    &--highlight
+      background-color: $primary-color
+      color: $black-color
+      border-radius: $border-radius
+
+      &:hover
+        background-color: opacity(0.8)
+        color: $black-color
+
+    @media (max-width: $breakpoint-md - 1)
+      display: block
+      padding: $spacing-sm $spacing-lg
+
+  &__toggle
+    display: none
+    background: none
+    border: none
+    width: 30px
+    height: 30px
+    position: relative
+
+  &
+    display: block
+
+.hamburger
+  display: block
+  width: 100%
+  height: 2px
+  background-color: $white
+  position: relative
+  transition: $transition-base
+
+  &::before,
+  &::after
+    content: ''
+    position: absolute
+    width: 100%
+    height: 2px
+    background-color: $white
+    transition: $transition-base
+
+  &::before
+    top: -8px
+
+  &::after
+    bottom: -8px
+
+  &.active
+    background-color: transparent
+
+    &::before
+      transform: rotate(45deg)
+      top: 0
+
+    &::after
+      transform: rotate(-45deg)
+      bottom: 0
+
+// Footer
+.footer
+  background-color: $secondary-color
+  color: $black-color
+  padding: $spacing-xxl 0 $spacing-md
+
+  &__content
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin-bottom: $spacing-xxl
+
+    @media (max-width: $breakpoint-md - 1)
+      flex-direction: column
+
+  &__logo
+    flex: 0 0 100%
+    max-width: 100%
+    margin-bottom: $spacing-xl
+
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 30%
+      max-width: 30%
+      margin-bottom: 0
+
+    h2
+      color: $black-color
+      margin-bottom: $spacing-sm
+
+    p
+      color: rgba($black-color, 0.8)
+
+  &__links
+    flex: 0 0 100%
+    max-width: 100%
+    display: flex
+    flex-wrap: wrap
+
+  &
+    flex: 0 0 65%
+    max-width: 65%
+
+  &__column
+    flex: 0 0 100%
+    max-width: 100%
+    margin-bottom: $spacing-lg
+
+  &
+    flex: 0 0 33.333333%
+    max-width: 33.333333%
+    margin-bottom: 0
+
+    h3
+      color: $black-color
+      margin-bottom: $spacing-md
+      font-size: $font-size-lg
+
+    ul
+      list-style: none
+      padding: 0
+      margin: 0
+
+      li
+        margin-bottom: $spacing-sm
+
+        a
+          color: rgba($black-color, 0.8)
+          text-decoration: none
+          transition: $transition-base
+
+          &:hover
+            color: $primary-color
+
+  &__social
+    display: flex
+    flex-wrap: wrap
+
+    .social-link
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      width: 36px
+      height: 36px
+      background-color: rgba($black-color, 0.1)
+      color: $black-color
+      border-radius: 50%
+      margin-right: $spacing-sm
+      margin-bottom: $spacing-sm
+      transition: $transition-base
+
+      &:hover
+        background-color: $primary-color
+        color: $black-color
+        transform: translateY(-3px)
+
+  &__bottom
+    text-align: center
+    padding-top: $spacing-md
+    border-top: 1px solid rgba($black-color, 0.1)
+
+    p
+      color: rgba($black-color, 0.6)
+      margin-bottom: 0
+      font-size: $font-size-sm
+
+// Main content sections
+section
+  padding: $spacing-xxl 0
+
+  &:first-of-type
+    padding-top: 120px

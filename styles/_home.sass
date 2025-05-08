@@ -1,0 +1,366 @@
+@use 'variables' as *
+  
+// Hero section
+.hero
+  position: relative
+  padding: 140px 0 $spacing-xxl
+  background-color: $white
+  overflow: hidden
+
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-image: radial-gradient(circle at top right, rgba($primary-color, 0.1), transparent 50%)
+    z-index: 1
+
+  &::after
+    content: ''
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 300px
+    height: 300px
+    background-image: radial-gradient(circle, rgba($secondary-color, 0.2), transparent 70%)
+    z-index: 1
+
+  .container
+    position: relative
+    z-index: 2
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+
+  &__content
+    flex: 0 0 100%
+    max-width: 100%
+    margin-bottom: $spacing-xl
+
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 50%
+      max-width: 50%
+      margin-bottom: 0
+
+  &__image
+    flex: 0 0 100%
+    max-width: 100%
+
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 50%
+      max-width: 50%
+
+    img
+      border-radius: $border-radius-lg
+      box-shadow: $shadow-lg
+      width: 100%
+      max-height: 400px
+      object-fit: cover
+
+  &__title
+    font-size: 2.5rem
+    margin-bottom: $spacing-md
+    color: $dark-color
+
+    @media (min-width: $breakpoint-lg)
+      font-size: 3rem
+
+  &__text
+    font-size: $font-size-lg
+    color: $gray-700
+    margin-bottom: $spacing-lg
+
+  &__cta
+    display: flex
+    flex-wrap: wrap
+    gap: $spacing-md
+
+    .btn
+      margin-left: 0
+
+// Current raffle section
+.current-raffle
+  background-color: $black-color
+  color: $white
+
+  .section-title
+    color: $white
+
+  .raffle-showcase
+    max-width: 800px
+    margin: 0 auto
+
+  .raffle-card__details
+    display: grid
+    grid-template-columns: repeat(1, 1fr)
+    color: $black
+
+    .raffle-card__detail
+      margin: 10px
+
+    @media (min-width: $breakpoint-md)
+      grid-template-columns: repeat(2, 1fr)
+      
+    
+    .raffle-card__detail
+      text-align: center
+
+      @media (min-width: $breakpoint-sm)
+        text-align: left
+
+      .fas
+        color: $primary-color
+        font-size: 1.25rem
+        margin-right: $spacing-md
+        
+
+
+// About section
+.about
+  position: relative
+  background-color: $white
+  overflow: hidden
+
+  &::before
+    content: ''
+    position: absolute
+    top: -100px
+    left: -100px
+    width: 300px
+    height: 300px
+    border-radius: 50%
+    background-color: rgba($primary-color, 0.05)
+    z-index: 0
+
+  &__content
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    position: relative
+    z-index: 1
+
+  &__image
+    flex: 0 0 100%
+    max-width: 100%
+    margin-bottom: $spacing-xl
+
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 40%
+      max-width: 40%
+      margin-bottom: 0
+
+    img
+      border-radius: $border-radius-lg
+      box-shadow: $shadow
+      width: 100%
+
+  &__text
+    flex: 0 0 100%
+    max-width: 100%
+
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 50%
+      max-width: 50%
+      margin-left: $spacing-xl
+
+    h3
+      color: $dark-color
+      margin-bottom: $spacing-md
+
+    p
+      margin-bottom: $spacing-md
+      color: $gray-700
+
+  &__stats
+    display: flex
+    flex-wrap: wrap
+    margin-top: $spacing-lg
+
+    .about__stat
+      flex: 0 0 33.333333%
+      max-width: 33.333333%
+      text-align: center
+      padding: $spacing-md
+
+      &-number
+        display: block
+        font-size: 2rem
+        font-weight: $font-weight-bold
+        color: $primary-color
+        margin-bottom: $spacing-xs
+
+      &-text
+        display: block
+        color: $gray-600
+        font-size: $font-size-sm
+
+// Testimonials section
+.testimonials
+  background-color: $black-color
+
+  .section-title
+    color: $white
+
+  &__slider
+    display: grid
+    grid-template-columns: repeat(1, 1fr)
+    gap: $spacing-lg
+
+    @media (min-width: $breakpoint-lg)
+      grid-template-columns: repeat(3, 1fr)
+
+    .testimonial-card
+      background-color: rgba($white, 0.1)
+      border-radius: $border-radius-lg
+      color: $white
+      padding: 40px 40px
+      text-align: center
+
+      @media (min-width: $breakpoint-sm)
+        padding: 40px 80px
+
+      @media (min-width: $breakpoint-lg)
+        padding: 40px 40px
+
+      @media (min-width: $breakpoint-xl)
+        padding: 40px 80px
+
+      h4
+        color: $white
+        margin-top: $spacing-lg
+        text-transform: uppercase
+        font-size: 1.3rem
+
+      img
+        border-radius: 100%
+        border: 3px solid $primary-color
+        width: 110px
+        margin: 0 auto
+        margin-block: 30px
+
+      .testimonial-card__rating
+        .fas
+          color: $secondary-color
+
+      p
+        position: relative
+
+        .fa-solid
+          color: $primary-color
+          opacity: 0.1
+          font-size: 1.8rem
+          position: absolute
+          
+          &.fa-quote-left
+            top: -30px
+            left: -20px
+
+          &.fa-quote-right
+            bottom: -15px
+            right: -15px
+
+// Contact section
+.contact
+  background-color: $black-color
+  color: $white
+
+  .section-title
+    color: $white
+
+  &__content
+    display: flex
+    flex-wrap: wrap
+    margin: 0 ($spacing-md * -1)
+
+  &__info,
+  &__form-container
+    flex: 0 0 100%
+    max-width: 100%
+    padding: 0 $spacing-md
+    margin-bottom: $spacing-xl
+
+    @media (min-width: $breakpoint-md)
+      flex: 0 0 50%
+      max-width: 50%
+      margin-bottom: 0
+
+  &__info
+    h3
+      color: $white
+      margin-bottom: $spacing-md
+
+    p
+      color: rgba($white, 0.8)
+      margin-bottom: $spacing-lg
+
+  &__list
+    list-style: none
+    padding: 0
+    margin: 0 0 $spacing-lg
+
+    .contact__item
+      display: flex
+      align-items: flex-start
+      margin-bottom: $spacing-md
+
+      i
+        color: $primary-color
+        font-size: 1.25rem
+        margin-right: $spacing-md
+        margin-top: 3px
+
+      span
+        flex: 1
+        color: rgba($white, 0.8)
+
+  &__social
+    display: flex
+    flex-wrap: wrap
+
+    .social-link
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      width: 36px
+      height: 36px
+      background-color: rgba($white, 0.2)
+      color: $white
+      border-radius: 50%
+      margin-right: $spacing-sm
+      margin-bottom: $spacing-sm
+      transition: $transition-base
+
+      &:hover
+        background-color: $primary-color
+        color: $black-color
+        transform: translateY(-3px)
+
+  &__form-container
+    background-color: rgba($white, 0.1)
+    border-radius: $border-radius-lg
+    box-shadow: $shadow
+    padding: $spacing-xl
+    backdrop-filter: blur(10px)
+
+  &__form
+    .form-group
+      &:last-of-type
+        margin-bottom: $spacing-lg
+
+      label
+        color: $white
+
+      input,
+      textarea
+        background-color: rgba($white, 0.1)
+        border-color: rgba($white, 0.2)
+        color: $white
+
+        &::placeholder
+          color: rgba($white, 0.5)
+
+        &:focus
+          background-color: rgba($white, 0.15)
+          border-color: $primary-color

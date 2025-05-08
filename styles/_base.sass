@@ -1,0 +1,108 @@
+@use 'variables' as *
+  
+// Reset and base styles
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html
+  font-size: 16px
+  scroll-behavior: smooth
+
+body
+  font-family: $font-family-base
+  font-size: $font-size-base
+  font-weight: $font-weight-normal
+  line-height: $line-height-base
+  color: $gray-800
+  background-color: $background-color
+  overflow-x: hidden
+  width: 100vw
+
+h1, h2, h3, h4, h5, h6
+  margin-bottom: $spacing-md
+  font-weight: $font-weight-bold
+  line-height: $line-height-heading
+  color: $gray-900
+
+h1
+  font-size: 2.5rem
+
+h2
+  font-size: 2rem
+
+h3
+  font-size: 1.75rem
+
+h4
+  font-size: 1.5rem
+
+h5
+  font-size: 1.25rem
+
+h6
+  font-size: 1rem
+
+p
+  margin-bottom: $spacing-md
+
+ul, ol
+  margin-bottom: $spacing-md
+  padding-left: $spacing-lg
+
+a
+  color: $primary-color
+  text-decoration: none
+  transition: $transition-base
+  
+  &:hover
+    opacity: 0.8
+
+img
+  max-width: 100%
+  height: auto
+  display: block
+
+button
+  cursor: pointer
+  font-family: $font-family-base
+
+input,
+textarea,
+select
+  font-family: $font-family-base
+  font-size: $font-size-base
+
+.section-title
+  text-align: center
+  margin-bottom: $spacing-xxl
+  position: relative
+  
+  &::after
+    content: ''
+    display: block
+    width: 80px
+    height: 4px
+    background-color: $primary-color
+    margin: $spacing-md auto 0
+    border-radius: $border-radius-pill
+
+.container
+  width: 100%
+  padding-right: $spacing-md
+  padding-left: $spacing-md
+  margin-right: auto
+  margin-left: auto
+
+  @media (min-width: $breakpoint-sm)
+    max-width: $container-max-width-sm
+  
+  @media (min-width: $breakpoint-md)
+    max-width: $container-max-width-md
+  
+  @media (min-width: $breakpoint-lg)
+    max-width: $container-max-width-lg
+  
+  @media (min-width: $breakpoint-xl)
+    max-width: $container-max-width-xl
