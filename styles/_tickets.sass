@@ -1,6 +1,183 @@
 @use 'variables' as *
-  
-// Ticket grid styles
+
+// Tickets hero section
+.tickets-hero
+  background-color: $black-color
+  color: $white
+  padding: 140px 0 $spacing-xl
+  text-align: center
+  position: relative
+  overflow: hidden
+
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    width: 300px
+    height: 300px
+    background: radial-gradient(circle, rgba($primary-color, 0.3), transparent 70%)
+    z-index: 1
+
+  &::after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 300px
+    height: 300px
+    background: radial-gradient(circle, rgba($secondary-color, 0.2), transparent 70%)
+    z-index: 1
+
+  &__title
+    color: $white
+    font-size: 2.5rem
+    margin-bottom: $spacing-md
+    position: relative
+    z-index: 2
+    text-transform: uppercase
+    letter-spacing: 2px
+
+  &__text
+    color: rgba($white, 0.8)
+    max-width: 700px
+    margin: 0 auto $spacing-xl
+    font-size: $font-size-lg
+    position: relative
+    z-index: 2
+
+// Raffle info
+.raffle-info
+  background-color: rgba($white, 0.1)
+  border-radius: $border-radius-lg
+  padding: $spacing-xl
+  margin: 0 auto
+  max-width: 800px
+  backdrop-filter: blur(10px)
+  border: 1px solid rgba($white, 0.2)
+  position: relative
+  z-index: 2
+
+  h3
+    color: $white
+    text-align: center
+    margin-bottom: $spacing-lg
+    font-size: 1.75rem
+    text-transform: uppercase
+    letter-spacing: 1px
+
+  &__details
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: $spacing-lg
+
+  &__detail
+    display: flex
+    align-items: center
+    padding: $spacing-md
+    background: rgba($white, 0.05)
+    border-radius: $border-radius-lg
+    min-width: 200px
+
+    i
+      color: $secondary-color
+      margin-right: $spacing-md
+      font-size: 1.5rem
+
+    span
+      color: rgba($white, 0.9)
+      font-weight: $font-weight-bold
+
+// Ticket selection
+.ticket-selection
+  padding: $spacing-xxl 0
+  background-color: $background-color
+
+// Ticket controls
+.ticket-controls
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  margin-bottom: $spacing-xl
+  gap: $spacing-md
+
+  @media (max-width: $breakpoint-md - 1)
+    flex-direction: column
+
+// Ticket search
+.ticket-search
+  display: flex
+  max-width: 300px
+
+  @media (max-width: $breakpoint-md - 1)
+    max-width: 100%
+    width: 100%
+
+  input
+    flex: 1
+    border: 2px solid $gray-300
+    border-right: none
+    border-top-left-radius: $border-radius-pill
+    border-bottom-left-radius: $border-radius-pill
+    padding: $spacing-md $spacing-lg
+    font-size: $font-size-base
+    transition: $transition-base
+
+    &:focus
+      outline: none
+      border-color: $primary-color
+      box-shadow: 0 0 0 4px rgba($primary-color, 0.1)
+
+  button
+    background-color: $primary-color
+    color: $black-color
+    border: none
+    border-top-right-radius: $border-radius-pill
+    border-bottom-right-radius: $border-radius-pill
+    padding: 0 $spacing-lg
+    cursor: pointer
+    transition: $transition-base
+    font-size: 1.25rem
+
+    &:hover
+      transform: translateX(2px)
+      opacity: 0.9
+
+// Ticket filter
+.ticket-filter
+  display: flex
+  align-items: center
+  gap: $spacing-md
+
+  label
+    margin-bottom: 0
+    font-weight: $font-weight-bold
+    text-transform: uppercase
+    letter-spacing: 1px
+    color: $black-color
+
+  select
+    border: 2px solid $gray-300
+    border-radius: $border-radius-pill
+    padding: $spacing-md $spacing-xl $spacing-md $spacing-lg
+    background-color: $white
+    font-size: $font-size-base
+    appearance: none
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e")
+    background-repeat: no-repeat
+    background-position: right $spacing-lg center
+    background-size: 16px 12px
+    min-width: 200px
+    transition: $transition-base
+
+    &:focus
+      outline: none
+      border-color: $primary-color
+      box-shadow: 0 0 0 4px rgba($primary-color, 0.1)
+
+// Ticket grid
 .ticket-grid
   display: grid
   grid-template-columns: repeat(5, 1fr)
@@ -81,7 +258,7 @@
     &--selected
       background-color: $primary-color
       color: $black-color
-      border-color: $primary-color
+      opacity: 0.9
       animation: pulse 1s infinite
 
       &::before
@@ -101,3 +278,58 @@
 
     &--highlight
       animation: highlight 1s ease
+
+// Ticket pagination
+.ticket-pagination
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: $spacing-lg
+
+  .pagination-info
+    font-weight: $font-weight-bold
+    color: $black-color
+
+    #currentPage
+      color: $primary-color
+      font-size: 1.25rem
+
+  .btn
+    min-width: 120px
+
+    i
+      transition: $transition-base
+
+    &:hover
+      i
+        transform: translateX(-5px)
+
+      &:last-child i
+        transform: translateX(5px)
+
+// Total price display
+.total-price
+  display: block
+  margin-top: $spacing-sm
+  font-size: 1.25rem
+  font-weight: $font-weight-bold
+  color: $primary-color
+
+@keyframes pulse
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.05)
+  100%
+    transform: scale(1)
+
+@keyframes highlight
+  0%
+    transform: scale(1)
+    background-color: $primary-color
+  50%
+    transform: scale(1.1)
+    background-color: $secondary-color
+  100%
+    transform: scale(1)
+    background-color: $white

@@ -1,5 +1,5 @@
 @use 'variables' as *
-  
+
 // Buttons
 .btn
   display: inline-block
@@ -25,7 +25,7 @@
   &::after
     content: ''
     position: absolute
-    top: -50%
+    bottom: -50%
     left: -50%
     width: 200%
     height: 200%
@@ -42,7 +42,6 @@
     color: $black-color
 
     &:hover, &:focus
-      background-color: opacity(0.8)
       color: $black-color
       transform: translateY(-2px)
 
@@ -51,7 +50,6 @@
     color: $black-color
 
     &:hover, &:focus
-      background-color: opacity(0.8)
       color: $black-color
       transform: translateY(-2px)
 
@@ -60,7 +58,6 @@
     color: $white
 
     &:hover, &:focus
-      background-color: opacity(0.8)
       color: $white
       transform: translateY(-2px)
 
@@ -101,7 +98,7 @@
     display: block
     margin-bottom: $spacing-sm
     font-weight: $font-weight-bold
-    color: $black-color
+    color: $gray-800
     text-transform: uppercase
     letter-spacing: 1px
     font-size: $font-size-sm
@@ -114,7 +111,7 @@
     padding: $spacing-md
     font-size: $font-size-base
     line-height: $line-height-base
-    color: $black-color
+    color: $gray-800
     background-color: $white
     background-clip: padding-box
     border: 2px solid $gray-300
@@ -150,22 +147,6 @@
     color: $error-color
     font-size: $font-size-sm
     font-weight: $font-weight-bold
-
-// Selected ticket
-.selected-ticket
-  display: inline-block
-  font-weight: $font-weight-bold
-  color: $black-color
-  font-size: 1.5rem
-  text-shadow: 0 2px 4px rgba($black, 0.1)
-
-// Total price
-.total-price
-  display: block
-  margin-top: $spacing-sm
-  font-size: 1.25rem
-  font-weight: $font-weight-bold
-  color: $black-color
 
 // Raffle card
 .raffle-card
@@ -255,4 +236,319 @@
       span
         font-size: $font-size-base
         color: $gray-800
+        font-weight: $font-weight-bold
+
+// Testimonial card
+.testimonial-card
+  background-color: rgba($white, 0.1)
+  border-radius: $border-radius-lg
+  padding: $spacing-xl
+  box-shadow: $shadow-lg
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+  transition: $transition-base
+  height: 100%
+  backdrop-filter: blur(10px)
+  border: 1px solid rgba($white, 0.2)
+
+  &:hover
+    transform: translateY(-10px) rotate(1deg)
+    box-shadow: $shadow-lg
+
+  &__image
+    width: 120px
+    height: 120px
+    border-radius: 50%
+    overflow: hidden
+    margin-bottom: $spacing-lg
+    border: 3px solid $primary-color
+    position: relative
+
+    &::after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: linear-gradient(45deg, rgba($primary-color, 0.2), transparent)
+
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+  &__content
+    flex: 1
+
+  &__text
+    font-style: italic
+    color: rgba($white, 0.9)
+    position: relative
+    padding: 0 $spacing-lg
+    margin-bottom: $spacing-lg
+    font-size: $font-size-lg
+
+    &::before,
+    &::after
+      content: '"'
+      font-size: 4rem
+      color: $primary-color
+      opacity: 0.3
+      position: absolute
+      line-height: 1
+
+    &::before
+      top: -20px
+      left: 0
+
+    &::after
+      bottom: -40px
+      right: 0
+
+  &__name
+    font-size: $font-size-lg
+    font-weight: $font-weight-bold
+    margin-bottom: $spacing-xs
+    color: $white
+    text-transform: uppercase
+    letter-spacing: 1px
+
+  &__location
+    color: rgba($white, 0.7)
+    font-size: $font-size-base
+    margin-bottom: $spacing-md
+    font-weight: $font-weight-light
+
+  &__rating
+    color: $secondary-color
+    font-size: 1.25rem
+
+    .fas
+      margin: 0 2px
+      filter: drop-shadow(0 2px 4px rgba($black, 0.2))
+
+// Social links
+.social-link
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 50px
+  height: 50px
+  background-color: rgba($white, 0.1)
+  color: $white
+  border-radius: 50%
+  margin-right: $spacing-sm
+  transition: $transition-base
+  border: 2px solid transparent
+  font-size: 1.25rem
+
+  &:hover
+    background-color: $primary-color
+    color: $black-color
+    transform: translateY(-5px) rotate(10deg)
+    border-color: rgba($white, 0.2)
+
+// Modal
+.modal
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba($black-color, 0.8)
+  z-index: $z-index-modal
+  padding: $spacing-md
+  overflow-y: auto
+  backdrop-filter: blur(10px)
+  opacity: 0
+  transition: opacity 0.3s ease
+
+  &.active
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 1
+
+  &__content
+    background-color: $white
+    border-radius: $border-radius-lg
+    max-width: 500px
+    width: 100%
+    position: relative
+    margin: auto
+    box-shadow: $shadow-lg
+    transform: translateY(20px)
+    transition: transform 0.3s ease
+    overflow: hidden
+    border: 2px solid $primary-color
+
+    &.active &
+      transform: translateY(0)
+
+  &__close
+    position: absolute
+    top: $spacing-md
+    right: $spacing-md
+    font-size: 2rem
+    background: none
+    border: none
+    color: $gray-600
+    cursor: pointer
+    transition: $transition-base
+    z-index: 1
+    width: 40px
+    height: 40px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+
+    &:hover
+      color: $error-color
+      background-color: rgba($error-color, 0.1)
+      transform: rotate(90deg)
+
+  &__header
+    padding: $spacing-lg
+    border-bottom: 2px solid $gray-200
+
+    h3
+      margin-bottom: $spacing-sm
+      color: $black-color
+      font-size: 1.75rem
+
+    p
+      color: rgba($black-color, 0.8)
+      margin-bottom: 0
+      font-weight: $font-weight-bold
+
+  &__body
+    padding: $spacing-xl
+
+// Animation classes
+.fade-in
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards
+
+.slide-in-right
+  animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards
+
+.slide-in-left
+  animation: slideInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards
+
+.slide-in-up
+  animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards
+
+.bounce
+  animation: bounce 0.5s cubic-bezier(0.4, 0, 0.2, 1) infinite
+
+// Animations
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes slideInRight
+  from
+    transform: translateX(100px)
+    opacity: 0
+  to
+    transform: translateX(0)
+    opacity: 1
+
+@keyframes slideInLeft
+  from
+    transform: translateX(-100px)
+    opacity: 0
+  to
+    transform: translateX(0)
+    opacity: 1
+
+@keyframes slideInUp
+  from
+    transform: translateY(100px)
+    opacity: 0
+  to
+    transform: translateY(0)
+    opacity: 1
+
+@keyframes bounce
+  0%, 100%
+    transform: translateY(0)
+  50%
+    transform: translateY(-15px)
+
+// Selected ticket
+.selected-ticket
+  display: inline-block
+  font-weight: $font-weight-bold
+  color: $primary-color
+  font-size: 1.5rem
+  text-shadow: 0 2px 4px rgba($black, 0.1)
+
+// Confirmation message
+.confirmation-message
+  text-align: center
+  margin-bottom: $spacing-xl
+
+  i
+    color: $success-color
+    font-size: 4rem
+    margin-bottom: $spacing-lg
+    animation: bounce 1s ease infinite
+
+  p
+    font-size: $font-size-lg
+    font-weight: $font-weight-bold
+    color: $black-color
+
+.confirmation-details
+  background-color: $gray-100
+  padding: $spacing-lg
+  border-radius: $border-radius-lg
+  margin-bottom: $spacing-lg
+  border: 2px solid $gray-200
+
+  p
+    font-weight: $font-weight-bold
+    margin-bottom: $spacing-md
+    color: $black-color
+    text-transform: uppercase
+    letter-spacing: 1px
+    font-size: $font-size-sm
+
+  ol
+    margin-bottom: 0
+
+    li
+      margin-bottom: $spacing-md
+      padding-left: $spacing-md
+      position: relative
+      color: $gray-800
+
+      &:last-child
+        margin-bottom: 0
+
+      strong
+        color: $primary-color
+        font-weight: $font-weight-bolder
+
+      &::before
+        content: counter(list-item)
+        position: absolute
+        left: -$spacing-lg
+        top: 0
+        width: 24px
+        height: 24px
+        background-color: $primary-color
+        color: $black-color
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: $font-size-sm
         font-weight: $font-weight-bold
