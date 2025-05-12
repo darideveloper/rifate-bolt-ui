@@ -420,14 +420,24 @@
       margin-bottom: $spacing-sm
       color: $black-color
       font-size: 1.75rem
+      text-align: center
 
     p
       color: rgba($black-color, 0.8)
       margin-bottom: 0
       font-weight: $font-weight-bold
+      display: flex
+      align-items: center
+      flex-direction: column
+
+      span
+        text-align: center
 
   &__body
     padding: $spacing-xl
+
+    @media (max-width: $breakpoint-md)
+      padding: $spacing-md
 
 // Animation classes
 .fade-in
