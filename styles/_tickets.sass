@@ -110,10 +110,14 @@
 .ticket-search
   display: flex
   max-width: 300px
+  // width: 100%
+  // border: 1px solid red
+  // margin: 0 auto
 
   @media (max-width: $breakpoint-md - 1)
     max-width: 100%
     width: 100%
+    margin: 0
 
   input
     flex: 1
@@ -124,6 +128,7 @@
     padding: $spacing-md $spacing-lg
     font-size: $font-size-base
     transition: $transition-base
+    width: 100%
 
     &:focus
       outline: none
@@ -151,6 +156,10 @@
   align-items: center
   gap: $spacing-md
 
+  @media (max-width: $breakpoint-sm - 1)
+    flex-direction: column
+    align-items: flex-center
+
   label
     margin-bottom: 0
     font-weight: $font-weight-bold
@@ -171,6 +180,7 @@
     background-size: 16px 12px
     min-width: 200px
     transition: $transition-base
+    width: 330px
 
     &:focus
       outline: none
@@ -282,6 +292,8 @@
 // Ticket pagination
 .ticket-pagination
   display: flex
+  flex-direction: column
+  margin-top: 30px
   justify-content: center
   align-items: center
   gap: $spacing-lg
@@ -333,3 +345,11 @@
   100%
     transform: scale(1)
     background-color: $white
+
+
+.selected-tickets-actions
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  width: 100%
